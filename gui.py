@@ -32,6 +32,6 @@ b5_button.pack( side = BOTTOM)
 b6_button = Button(bottomframe, text ="Geeks6", fg ="green") 
 b6_button.pack( side = BOTTOM) 
 
-window.title('Plasma Pro')
+window.title('Python Gui')
 window.geometry("450x300") 
 window.mainloop()
