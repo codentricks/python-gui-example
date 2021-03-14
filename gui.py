@@ -14,10 +14,10 @@ frame.pack()
 bottomframe = Frame(window) 
 bottomframe.pack( side = BOTTOM ) 
   
-trashSize = Label(frame, text =osCore.folderSize(), fg ="red") 
-trashSize.pack( side = LEFT) 
+trashSize = Label(frame, text =" Trash : "+osCore.trashSize()+" ", fg ="#444444") 
+trashSize.pack( side = LEFT,padx=10) 
   
-b2_button = Button(frame, text ="Geeks2", fg ="brown") 
+b2_button = Button(frame, text ="Clear Trash", fg ="#444444") 
 b2_button.pack( side = LEFT ) 
   
 b3_button = Button(frame, text ="Geeks3", fg ="blue") 
