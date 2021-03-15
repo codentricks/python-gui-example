@@ -1,9 +1,12 @@
-import os
+import os, shutil
 import platform 
 import os.path
 import threading
 import subprocess 
 from subprocess import Popen, PIPE
+# pylint: disable=E1101
+
+trashSizee=""
 
 def osName():
   os=platform.system()
@@ -25,6 +28,31 @@ def trashSize():
     s = str(output)
   
     return s
+
+def clearTrash():
+    path=''
+    command=""
+    if(osName()=="Linux") :
+      homedir = os.environ['HOME']
+      path=homedir+"/.local/share/Trash"
+    
+    else :
+      path='/home/sanjay/'
+
+    folder=path
+    for filename in os.listdir(folder):
+      file_path = os.path.join(folder, filename)
+      try:
+          if os.path.isfile(file_path) or os.path.islink(file_path):
+              os.unlink(file_path)
+              global trashSizee
+              trashSizee.label.configure(text=trashSize())
+          elif os.path.isdir(file_path):
+              shutil.rmtree(file_path)
+      except Exception as e:
+          print('Failed to delete %s. Reason: %s' % (file_path, e))
+
+    
 
 def folderSize():
     path=''
